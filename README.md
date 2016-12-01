@@ -1,0 +1,1 @@
+Simple app that draws Pythagoras tree (fractal)
