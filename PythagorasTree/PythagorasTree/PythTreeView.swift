@@ -71,18 +71,40 @@ class PythTreeView: UIView {
 //    
 //    }
 
+    enum Angle {
+        case toRight(CGFloat)
+        case toLeft(CGFloat)
+    }
 
-    private func drawSquare(point: CGPoint, length: CGFloat, angle: CGFloat, color: UIColor) {
+    private func drawSquare(origin: CGPoint, length: CGFloat, angle: Angle, color: UIColor) {
         color.set()
-        let rect = CGRect(x: point.x, y: point.y, width: length, height: length)
+        var tempPoint = CGPoint()
+        var tempAngle: CGFloat = 0.0
+        switch angle {
+        case .toLeft(let degree):
+            tempPoint = CGPoint(x: origin.x, y: origin.y + length)
+            tempAngle = -degree
+        case .toRight(let degree):
+            tempPoint = CGPoint(x: origin.x + length, y: origin.y + length)
+            tempAngle = degree
+        }
+        let anchorPoint = tempPoint
+        let rotationAngle = tempAngle
+        let rect = CGRect(x: origin.x, y: origin.y, width: length, height: length)
         let path = UIBezierPath(rect: rect)
+        let toAnchorPoint = CGAffineTransform(translationX: -anchorPoint.x, y: -anchorPoint.y)
+        let fromAnchorPoint = CGAffineTransform(translationX: anchorPoint.x, y: anchorPoint.y)
+        path.apply(toAnchorPoint)
+        path.apply(CGAffineTransform(rotationAngle: rotationAngle))
+        path.apply(fromAnchorPoint)
         path.stroke()
     }
 
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        // Drawing code
+        let point = CGPoint(x: 0, y: 0)
+        drawSquare(origin: point, length: 20, angle: .toRight(0.2), color: UIColor.blue)
     }
 
 }
