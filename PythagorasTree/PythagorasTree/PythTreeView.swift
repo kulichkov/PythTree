@@ -9,7 +9,8 @@
 import UIKit
 
 enum Constants {
-    static let angle = M_PI_2
+    static let piDivByFour = CGFloat(M_PI_4)
+    static let piDivByTwo = CGFloat(M_PI_2)
     static let endLength = 0.7
 }
 
@@ -20,7 +21,7 @@ class PythTreeView: UIView {
     var lineWidth: CGFloat = 1.0
     var startLength: CGFloat = 40.0
     var changeLength: CGFloat = 10.0
-    var endLength: CGFloat = 0.7
+    var minLength: CGFloat = 0.7
     var angle: CGFloat = 0.0
 
 
@@ -71,40 +72,46 @@ class PythTreeView: UIView {
 //    
 //    }
 
-    enum Angle {
-        case toRight(CGFloat)
-        case toLeft(CGFloat)
-    }
 
-    private func drawSquare(origin: CGPoint, length: CGFloat, angle: Angle, color: UIColor) {
+    private func drawSquare(origin: CGPoint, length: CGFloat, angle: CGFloat, color: UIColor) {
         color.set()
-        var tempPoint = CGPoint()
-        var tempAngle: CGFloat = 0.0
-        switch angle {
-        case .toLeft(let degree):
-            tempPoint = CGPoint(x: origin.x, y: origin.y + length)
-            tempAngle = -degree
-        case .toRight(let degree):
-            tempPoint = CGPoint(x: origin.x + length, y: origin.y + length)
-            tempAngle = degree
-        }
-        let anchorPoint = tempPoint
-        let rotationAngle = tempAngle
         let rect = CGRect(x: origin.x, y: origin.y, width: length, height: length)
+        let rotation = CGAffineTransform(rotationAngle: angle)
         let path = UIBezierPath(rect: rect)
-        let toAnchorPoint = CGAffineTransform(translationX: -anchorPoint.x, y: -anchorPoint.y)
-        let fromAnchorPoint = CGAffineTransform(translationX: anchorPoint.x, y: anchorPoint.y)
+        let toAnchorPoint = CGAffineTransform(translationX: -origin.x, y: -origin.y)
+        let fromAnchorPoint = CGAffineTransform(translationX: origin.x, y: origin.y)
         path.apply(toAnchorPoint)
-        path.apply(CGAffineTransform(rotationAngle: rotationAngle))
+        path.apply(rotation)
         path.apply(fromAnchorPoint)
         path.stroke()
+    }
+
+    private func drawTree(origin: CGPoint, length: CGFloat, angle: CGFloat) {
+        if length < minLength { return }
+//        let newPoints = drawSquare(origin: origin, length: length, angle: angle, color: UIColor.blue)
+//        let leftAngle = Angle(direction: .toLeft, degree: Constants.angle + self.angle)
+//        let rightAngle = Angle(direction: .toRight, degree: Constants.angle - self.angle)
+//        let leftLength = length * cos(leftAngle.degree)
+//        let rightLength = length * sin(leftAngle.degree)
+//        drawTree(origin: newPoints.leftPoint, length: leftLength, angle: leftAngle)
+//        drawTree(origin: newPoints.rightPoint, length: rightLength, angle: rightAngle)
     }
 
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        let point = CGPoint(x: 0, y: 0)
-        drawSquare(origin: point, length: 20, angle: .toRight(0.2), color: UIColor.blue)
+        var angle: CGFloat = 0.0
+        let length: CGFloat = 70.0
+        let point = CGPoint(x: self.frame.midX - length/2, y: self.frame.midY - length/2)
+        drawSquare(origin: point, length: length, angle: angle, color: UIColor.blue)
+        angle = Constants.piDivByFour
+        let leftLength = cos(angle)*length
+        let rightLength = sin(angle)*length
+        let leftX = point.x - leftLength*sin(angle)
+        let rightX = point.x + leftLength*cos(angle)
+        let leftY = point.y - leftLength*cos(angle)
+        let rightY = point.y - leftLength*sin(angle)
+        drawSquare(origin: CGPoint(x: leftX, y: leftY), length: leftLength, angle: -angle, color: UIColor.black)
+        drawSquare(origin: CGPoint(x: rightX, y: rightY), length: rightLength, angle: -angle, color: UIColor.black)
     }
-
 }
