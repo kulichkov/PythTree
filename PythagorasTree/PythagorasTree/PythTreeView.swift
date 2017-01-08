@@ -19,10 +19,10 @@ class PythTreeView: UIView {
 
     var madeBySquares = true
     var lineWidth: CGFloat = 1.0
-    var startLength: CGFloat = 40.0
+    var startLength: CGFloat = 70.0
     var changeLength: CGFloat = 10.0
     var minLength: CGFloat = 0.7
-    var angle: CGFloat = 0.0
+    var addedAngle: CGFloat = 0.0
 
 
 
@@ -100,18 +100,19 @@ class PythTreeView: UIView {
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        var angle: CGFloat = 0.0
-        let length: CGFloat = 70.0
-        let point = CGPoint(x: self.frame.midX - length/2, y: self.frame.midY - length/2)
-        drawSquare(origin: point, length: length, angle: angle, color: UIColor.blue)
-        angle = Constants.piDivByFour
-        let leftLength = cos(angle)*length
-        let rightLength = sin(angle)*length
-        let leftX = point.x - leftLength*sin(angle)
-        let rightX = point.x + leftLength*cos(angle)
-        let leftY = point.y - leftLength*cos(angle)
-        let rightY = point.y - leftLength*sin(angle)
-        drawSquare(origin: CGPoint(x: leftX, y: leftY), length: leftLength, angle: -angle, color: UIColor.black)
-        drawSquare(origin: CGPoint(x: rightX, y: rightY), length: rightLength, angle: -angle, color: UIColor.black)
+        let length = startLength
+        let origin = CGPoint(x: self.frame.midX - length/2, y: self.frame.midY - length/2)
+        drawSquare(origin: origin, length: length, angle: 0.0, color: UIColor.blue)
+        let leftAngle = -(Constants.piDivByFour + addedAngle)
+        let leftLength = cos(leftAngle)*length
+        let leftX = origin.x + leftLength*sin(leftAngle)
+        let leftY = origin.y - leftLength*cos(leftAngle)
+        //TODO: исправить rigthAngle
+        let rigthAngle = leftAngle//-(Constants.piDivByTwo + Constants.piDivByFour + addedAngle)
+        let rightLength = sin(rigthAngle)*length
+        let rightX = origin.x + leftLength*cos(rigthAngle)
+        let rightY = origin.y - leftLength*sin(-rigthAngle)
+        drawSquare(origin: CGPoint(x: leftX, y: leftY), length: leftLength, angle: leftAngle, color: UIColor.black)
+        drawSquare(origin: CGPoint(x: rightX, y: rightY), length: rightLength, angle: -(rigthAngle-Constants.piDivByTwo), color: UIColor.red)
     }
 }
