@@ -11,7 +11,6 @@ import UIKit
 enum Constants {
     static let piDivByFour = CGFloat(M_PI_4)
     static let piDivByTwo = CGFloat(M_PI_2)
-    static let endLength = 0.7
 }
 
 @IBDesignable
@@ -20,16 +19,17 @@ class PythTreeView: UIView {
     var madeBySquares = true
     var lineWidth: CGFloat = 1.0
     var startLength: CGFloat = 40.0
-    var lengthChangeColor: CGFloat = 10.0
-    var minLength: CGFloat = 0.7
-    var addedAngle: CGFloat = -0.4
-    var leafColor = UIColor.green
-    var branchColor = UIColor.brown
+    var lengthChangeColor: CGFloat = 5.0
+    var endLength: CGFloat = 1.0
+    var addedAngle: CGFloat = 0.0
+    var leafColor = UIColor.black
+    var branchColor = UIColor.black
 
     private func drawSquare(origin: CGPoint, length: CGFloat, angle: CGFloat, color: UIColor) {
         color.set()
         var point = origin
         let path = UIBezierPath()
+        path.lineWidth = lineWidth
         path.move(to: point)
         point.x += length * cos(angle);
         point.y -= length * sin(angle);
@@ -47,7 +47,7 @@ class PythTreeView: UIView {
     }
 
     private func drawSquareTree(origin: CGPoint, length: CGFloat, angle: CGFloat) {
-        if length < minLength { return }
+        if length < endLength { return }
         let color = (length < lengthChangeColor) ? leafColor : branchColor
         drawSquare(origin: origin, length: length, angle: angle, color: color)
         let newAngle = Constants.piDivByFour + addedAngle
