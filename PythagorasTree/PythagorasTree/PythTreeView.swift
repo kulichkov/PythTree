@@ -17,21 +17,53 @@ enum Constants {
 @IBDesignable
 class PythTreeView: UIView {
     @IBInspectable
-    var madeBySquares: Bool = false
+    var madeBySquares: Bool = true {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     @IBInspectable
-    var lineWidth: CGFloat = 1.0
+    var lineWidth: CGFloat = 1.0{
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     @IBInspectable
-    var startLength: CGFloat = 40.0
+    var startLength: CGFloat = 40.0{
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     @IBInspectable
-    var lengthChangeColor: CGFloat = 5.0
+    var lengthChangeColor: CGFloat = 5.0{
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     @IBInspectable
-    var endLength: CGFloat = 1.0
+    var endLength: CGFloat = 1.0{
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     @IBInspectable
-    var addedAngle: CGFloat = 0.0
+    var addedAngle: CGFloat = 0.0{
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     @IBInspectable
-    var leafColor: UIColor = UIColor.black
+    var leafColor: UIColor = UIColor.black{
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     @IBInspectable
-    var branchColor: UIColor = UIColor.black
+    var branchColor: UIColor = UIColor.black{
+        didSet {
+            setNeedsDisplay()
+        }
+    }
 
     private func drawLine(origin: CGPoint, length: CGFloat, angle: CGFloat, color: UIColor) {
         color.set()
@@ -108,11 +140,11 @@ class PythTreeView: UIView {
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         if madeBySquares {
-            drawSquareTree(origin: CGPoint(x: self.frame.midX - startLength/2, y: self.frame.midY + startLength/2),
+            drawSquareTree(origin: CGPoint(x: self.frame.midX - startLength/2, y: self.frame.midY + self.frame.midY/2 + startLength/2),
                            length: startLength,
                            angle: Constants.zero)
         } else {
-            drawLineTree(origin: CGPoint(x: self.frame.midX, y: self.frame.midY + startLength/2),
+            drawLineTree(origin: CGPoint(x: self.frame.midX, y: self.frame.midY + self.frame.midY/2 + startLength/2),
                          length: startLength,
                          angle: Constants.piDivByTwo)
         }
