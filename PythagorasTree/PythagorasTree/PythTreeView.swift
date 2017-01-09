@@ -23,43 +23,49 @@ class PythTreeView: UIView {
         }
     }
     @IBInspectable
-    var lineWidth: CGFloat = 1.0{
+    var lineWidth: CGFloat = 1.0 {
         didSet {
             setNeedsDisplay()
         }
     }
     @IBInspectable
-    var startLength: CGFloat = 40.0{
+    var startLength: CGFloat = 40.0 {
         didSet {
             setNeedsDisplay()
         }
     }
     @IBInspectable
-    var lengthChangeColor: CGFloat = 5.0{
+    var lengthChangeColor: CGFloat = 5.0 {
         didSet {
             setNeedsDisplay()
         }
     }
     @IBInspectable
-    var endLength: CGFloat = 1.0{
+    var endLength: CGFloat = 1.0 {
         didSet {
             setNeedsDisplay()
         }
     }
     @IBInspectable
-    var addedAngle: CGFloat = 0.0{
+    var addedAngle: CGFloat = 0.0 {
         didSet {
             setNeedsDisplay()
         }
     }
     @IBInspectable
-    var leafColor: UIColor = UIColor.black{
+    var leafColor: UIColor = UIColor.black {
         didSet {
             setNeedsDisplay()
         }
     }
     @IBInspectable
-    var branchColor: UIColor = UIColor.black{
+    var branchColor: UIColor = UIColor.black {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    @IBInspectable
+    var fillSquare: Bool = false {
         didSet {
             setNeedsDisplay()
         }
@@ -96,6 +102,7 @@ class PythTreeView: UIView {
         point.y += length * sin(Constants.piDivByTwo - angle);
         path.addLine(to: point)
         path.stroke()
+        if fillSquare {path.fill()}
     }
 
     private func drawLineTree(origin: CGPoint, length: CGFloat, angle: CGFloat) {
