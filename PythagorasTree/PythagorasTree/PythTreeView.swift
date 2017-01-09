@@ -102,7 +102,7 @@ class PythTreeView: UIView {
         point.y += length * sin(Constants.piDivByTwo - angle);
         path.addLine(to: point)
         path.stroke()
-        if fillSquare {path.fill()}
+        if fillSquare { path.fill() }
     }
 
     private func drawLineTree(origin: CGPoint, length: CGFloat, angle: CGFloat) {
