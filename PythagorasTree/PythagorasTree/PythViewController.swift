@@ -30,6 +30,8 @@ class PythViewController: UIViewController {
         switch sender.state {
         case .changed:
             pythView.startLength *= sender.scale
+            pythView.endLength *= sender.scale
+            pythView.lengthChangeColor *= sender.scale
             sender.scale = 1.0
         default:
             break
