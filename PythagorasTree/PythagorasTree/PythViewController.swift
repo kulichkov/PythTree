@@ -26,6 +26,16 @@ class PythViewController: UIViewController {
         }
     }
 
+    @IBAction func startLineChanged(_ sender: UIPinchGestureRecognizer) {
+        switch sender.state {
+        case .changed:
+            pythView.startLength *= sender.scale
+            sender.scale = 1.0
+        default:
+            break
+        }
+    }
+
     @IBAction func angleChanged(_ sender: UISlider) {
         pythView.addedAngle = CGFloat(sender.value)
         angle.text = pythView.addedAngle.formatted(format: ".3")
