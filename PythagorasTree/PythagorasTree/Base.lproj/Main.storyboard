@@ -93,6 +93,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="cjT-Vk-ZIi" secondAttribute="trailing" id="2m1-Ns-Uqg"/>
                             <constraint firstItem="HB5-ZB-PgP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="3M2-DL-krw"/>
@@ -104,6 +105,9 @@
                             <constraint firstItem="cjT-Vk-ZIi" firstAttribute="top" secondItem="HB5-ZB-PgP" secondAttribute="bottom" constant="8" symbolic="YES" id="b1T-KU-nTC"/>
                             <constraint firstItem="HB5-ZB-PgP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xbA-if-upR"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="kxD-vy-6Q2" appends="YES" id="e92-Z1-dd8"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="angle" destination="nUh-7t-wcF" id="t9L-Vn-S0X"/>
@@ -116,8 +120,13 @@
                         <action selector="startLineChanged:" destination="BYZ-38-t0r" id="OyF-aA-uBv"/>
                     </connections>
                 </pinchGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="kxD-vy-6Q2">
+                    <connections>
+                        <action selector="originChanged:" destination="BYZ-38-t0r" id="ggB-7j-SMP"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-628" y="-8"/>
+            <point key="canvasLocation" x="-919" y="-21"/>
         </scene>
     </scenes>
 </document>

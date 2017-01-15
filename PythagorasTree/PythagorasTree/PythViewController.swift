@@ -26,9 +26,26 @@ class PythViewController: UIViewController {
         }
     }
 
+    @IBAction func originChanged(_ sender: UIPanGestureRecognizer) {
+        switch sender.state {
+        case .changed:
+            let translation = sender.translation(in: pythView)
+            if translation != CGPoint.zero {
+                let newOrigin = CGPoint(x: pythView.origin.x + translation.x, y: pythView.origin.y + translation.y)
+                pythView.origin = newOrigin
+                sender.setTranslation(CGPoint.zero, in: pythView)
+            }
+        default:
+            break
+        }
+    }
+
     @IBAction func startLineChanged(_ sender: UIPinchGestureRecognizer) {
         switch sender.state {
         case .changed:
+            if sender.scale == 0 {
+                break
+            }
             pythView.startLength *= sender.scale
             pythView.endLength *= sender.scale
             pythView.lengthChangeColor *= sender.scale
@@ -46,6 +63,9 @@ class PythViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let originX = pythView.bounds.midX - pythView.startLength/2
+        let originY = pythView.bounds.midY + pythView.bounds.midY/2 + pythView.startLength/2
+        pythView.origin = CGPoint(x: originX, y: originY)
         // Do any additional setup after loading the view.
     }
 
