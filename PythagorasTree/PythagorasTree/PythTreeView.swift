@@ -14,7 +14,7 @@ enum Constants {
     static let zero: CGFloat = 0.0
 }
 
-@IBDesignable
+//@IBDesignable
 class PythTreeView: UIView {
     @IBInspectable
     var madeBySquares: Bool = true {
@@ -147,11 +147,11 @@ class PythTreeView: UIView {
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         if madeBySquares {
-            drawSquareTree(origin: CGPoint(x: self.frame.midX - startLength/2, y: self.frame.midY + self.frame.midY/2 + startLength/2),
+            drawSquareTree(origin: CGPoint(x: self.bounds.midX - startLength/2, y: self.bounds.midY + self.bounds.midY/2 + startLength/2),
                            length: startLength,
                            angle: Constants.zero)
         } else {
-            drawLineTree(origin: CGPoint(x: self.frame.midX, y: self.frame.midY + self.frame.midY/2 + startLength/2),
+            drawLineTree(origin: CGPoint(x: self.bounds.midX, y: self.bounds.midY + self.bounds.midY/2 + startLength/2),
                          length: startLength,
                          angle: Constants.piDivByTwo)
         }

@@ -8,13 +8,29 @@
 
 import UIKit
 
-class PythViewController: UIViewController {
+extension CGFloat {
+    func formatted(format: String) -> String {
+        return String(format: "%\(format)f", self)
+    }
+}
 
-    @IBAction func angleChanged(_ sender: UISlider) {
-        if let pythView = view as? PythTreeView {
-            pythView.addedAngle = CGFloat(sender.value)
+class PythViewController: UIViewController {
+    @IBOutlet weak var pythView: PythTreeView!
+    @IBOutlet weak var angle: UILabel!
+    @IBAction func changeTreeType(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 1:
+            pythView.madeBySquares = false
+        default:
+            pythView.madeBySquares = true
         }
     }
+
+    @IBAction func angleChanged(_ sender: UISlider) {
+        pythView.addedAngle = CGFloat(sender.value)
+        angle.text = pythView.addedAngle.formatted(format: ".3")
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
