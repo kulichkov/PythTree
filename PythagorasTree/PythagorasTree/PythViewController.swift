@@ -14,12 +14,19 @@ extension CGFloat {
     }
 }
 
+fileprivate enum Constants {
+    static let segmentIndexForLines = 1
+    static let scaleZero: CGFloat = 0
+    static let scaleDefault: CGFloat = 1
+    static let angleTextFormat = ".3"
+}
+
 class PythViewController: UIViewController {
     @IBOutlet weak var pythView: PythTreeView!
     @IBOutlet weak var angle: UILabel!
     @IBAction func changeTreeType(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-        case 1:
+        case Constants.segmentIndexForLines:
             pythView.madeBySquares = false
         default:
             pythView.madeBySquares = true
@@ -43,13 +50,13 @@ class PythViewController: UIViewController {
     @IBAction func startLineChanged(_ sender: UIPinchGestureRecognizer) {
         switch sender.state {
         case .changed:
-            if sender.scale == 0 {
+            if sender.scale == Constants.scaleZero {
                 break
             }
             pythView.startLength *= sender.scale
             pythView.endLength *= sender.scale
             pythView.lengthChangeColor *= sender.scale
-            sender.scale = 1.0
+            sender.scale = Constants.scaleDefault
         default:
             break
         }
@@ -57,7 +64,7 @@ class PythViewController: UIViewController {
 
     @IBAction func angleChanged(_ sender: UISlider) {
         pythView.addedAngle = CGFloat(sender.value)
-        angle.text = pythView.addedAngle.formatted(format: ".3")
+        angle.text = pythView.addedAngle.formatted(format: Constants.angleTextFormat)
     }
 
 

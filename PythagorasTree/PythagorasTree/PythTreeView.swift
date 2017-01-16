@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum Constants {
+fileprivate enum Constants {
     static let piDivByFour = CGFloat(M_PI_4)
     static let piDivByTwo = CGFloat(M_PI_2)
     static let zero: CGFloat = 0.0
