@@ -23,6 +23,7 @@ fileprivate enum Constants {
 
 class PythViewController: UIViewController {
     @IBOutlet weak var pythView: PythTreeView!
+    fileprivate var snapshot: UIView?
     @IBOutlet weak var angle: UILabel!
     @IBAction func changeTreeType(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
@@ -49,14 +50,30 @@ class PythViewController: UIViewController {
 
     @IBAction func startLineChanged(_ sender: UIPinchGestureRecognizer) {
         switch sender.state {
+        case .began:
+            snapshot = self.pythView.snapshotView(afterScreenUpdates: false)
+            snapshot?.alpha = 0.8
+            self.pythView.addSubview(snapshot!)
         case .changed:
             if sender.scale == Constants.scaleZero {
                 break
             }
-            pythView.startLength *= sender.scale
-            pythView.endLength *= sender.scale
-            pythView.lengthChangeColor *= sender.scale
+            let touchLocation = sender.location(in: self.pythView)
+            snapshot!.frame.size.height *= sender.scale
+            snapshot!.frame.size.width *= sender.scale
+            snapshot!.frame.origin.x = snapshot!.frame.origin.x * sender.scale + (1 - sender.scale) * touchLocation.x
+            snapshot!.frame.origin.y = snapshot!.frame.origin.y * sender.scale + (1 - sender.scale) * touchLocation.y
             sender.scale = Constants.scaleDefault
+        case .ended:
+            let changedScale = snapshot!.frame.height / self.pythView!.frame.height
+            pythView!.origin.x = pythView!.origin.x * changedScale + snapshot!.frame.origin.x
+            pythView!.origin.y = pythView!.origin.y * changedScale + snapshot!.frame.origin.y
+            snapshot!.removeFromSuperview()
+            snapshot = nil
+            // old code
+            pythView.startLength *= changedScale
+            pythView.endLength *= changedScale
+            pythView.lengthChangeColor *= changedScale
         default:
             break
         }
