@@ -152,7 +152,9 @@ class PythTreeView: UIView {
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         if madeBySquares {
-            drawSquareTree(origin: self.origin,
+            var originOfSquare = origin
+            originOfSquare.x -= startLength/2
+            drawSquareTree(origin: originOfSquare,
                            length: startLength,
                            angle: Constants.zero)
         } else {

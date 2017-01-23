@@ -70,8 +70,8 @@ class PythViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let originX = pythView.bounds.midX - pythView.startLength/2
-        let originY = pythView.bounds.midY + pythView.bounds.midY/2 + pythView.startLength/2
+        let originX = view.bounds.midX
+        let originY = pythView.bounds.midY
         pythView.origin = CGPoint(x: originX, y: originY)
         // Do any additional setup after loading the view.
     }
