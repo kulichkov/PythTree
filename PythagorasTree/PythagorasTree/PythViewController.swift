@@ -36,13 +36,21 @@ class PythViewController: UIViewController {
 
     @IBAction func originChanged(_ sender: UIPanGestureRecognizer) {
         switch sender.state {
+        case .began:
+            snapshot = self.pythView.snapshotView(afterScreenUpdates: false)
+            snapshot?.alpha = 0.8
+            self.pythView.addSubview(snapshot!)
         case .changed:
             let translation = sender.translation(in: pythView)
-            if translation != CGPoint.zero {
-                let newOrigin = CGPoint(x: pythView.origin.x + translation.x, y: pythView.origin.y + translation.y)
-                pythView.origin = newOrigin
-                sender.setTranslation(CGPoint.zero, in: pythView)
-            }
+            if translation == CGPoint.zero { break }
+            snapshot?.center.x += translation.x
+            snapshot?.center.y += translation.y
+            sender.setTranslation(CGPoint.zero, in: pythView)
+        case .ended:
+            pythView.origin.x += snapshot!.frame.origin.x
+            pythView.origin.y += snapshot!.frame.origin.y
+            snapshot!.removeFromSuperview()
+            snapshot = nil
         default:
             break
         }
