@@ -13,8 +13,9 @@ class TreeViewController: UIViewController {
     @IBOutlet weak var treeView: PythTreeView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        treeView.addGestureRecognizer(UIPanGestureRecognizer(target: treeView, action: #selector(PythTreeView.originMove)))
         // Do any additional setup after loading the view.
+        treeView.addGestureRecognizer(UIPinchGestureRecognizer(target: treeView, action: #selector(PythTreeView.scaleChanged)))
+        treeView.addGestureRecognizer(UIPanGestureRecognizer(target: treeView, action: #selector(PythTreeView.originMove)))
     }
 
     override func didReceiveMemoryWarning() {
