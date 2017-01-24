@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Pyth View Controller-->
+        <!--Root View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="PythViewController" customModule="PythagorasTree" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RootViewController" customModule="PythagorasTree" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -22,111 +23,132 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ugW-ik-R52" customClass="PythTreeView" customModule="PythagorasTree" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="124" width="375" height="543"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="lengthChangeColor">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="startLength">
-                                        <real key="value" value="40"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="endLength">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="leafColor">
-                                        <color key="value" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="branchColor">
-                                        <color key="value" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="addedAngle">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B3S-75-Plw">
+                                <rect key="frame" x="0.0" y="200" width="375" height="467"/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="1FN-lN-iLW" appends="YES" id="vto-Yh-6w2"/>
+                                    <segue destination="UsE-Ok-E78" kind="embed" identifier="SequeTreeView" id="h6y-fV-rga"/>
                                 </connections>
-                            </view>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="HB5-ZB-PgP">
-                                <rect key="frame" x="123" y="28" width="129" height="29"/>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bL4-FR-xMy">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="gwY-07-hCF"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="Nh4-q8-RM3" kind="embed" identifier="SequeSettingsView" id="pwb-VY-Zbo"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="bL4-FR-xMy" firstAttribute="trailing" secondItem="B3S-75-Plw" secondAttribute="trailing" id="3Kz-eB-TW7"/>
+                            <constraint firstItem="B3S-75-Plw" firstAttribute="top" secondItem="bL4-FR-xMy" secondAttribute="bottom" id="FRb-WY-hac"/>
+                            <constraint firstItem="bL4-FR-xMy" firstAttribute="leading" secondItem="B3S-75-Plw" secondAttribute="leading" id="IGR-jE-0bX"/>
+                            <constraint firstAttribute="trailing" secondItem="bL4-FR-xMy" secondAttribute="trailing" id="Oy8-s3-M2w"/>
+                            <constraint firstItem="bL4-FR-xMy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="RkB-pY-QSB"/>
+                            <constraint firstItem="bL4-FR-xMy" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Y0C-1l-e8d"/>
+                            <constraint firstItem="B3S-75-Plw" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="rbI-Hb-TrZ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1199" y="-684"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="c8a-60-7iF">
+            <objects>
+                <viewController id="Nh4-q8-RM3" customClass="SettingsViewController" customModule="PythagorasTree" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oHr-Xy-gHZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Tsk-86-QTF">
+                                <rect key="frame" x="123" y="50" width="129" height="29"/>
                                 <segments>
                                     <segment title="Squares"/>
                                     <segment title="Lines"/>
                                 </segments>
-                                <connections>
-                                    <action selector="changeTreeType:" destination="BYZ-38-t0r" eventType="valueChanged" id="vr9-Bj-zx4"/>
-                                </connections>
                             </segmentedControl>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cjT-Vk-ZIi">
-                                <rect key="frame" x="16" y="64" width="343" height="60"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Isq-9b-4oK">
+                                <rect key="frame" x="16" y="86" width="343" height="60"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="usa-Lt-szR">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="OTq-yk-hPT">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Angle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6M-Rz-JNL">
-                                                <rect key="frame" x="0.0" y="0.0" width="277" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Angle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gs3-Ra-fVU">
+                                                <rect key="frame" x="0.0" y="0.0" width="276.5" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUh-7t-wcF">
-                                                <rect key="frame" x="277" y="0.0" width="66" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GTo-vm-0gR">
+                                                <rect key="frame" x="276.5" y="0.0" width="66.5" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-0.5" maxValue="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0tu-qF-10h">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-0.5" maxValue="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3pB-KW-bqu">
                                         <rect key="frame" x="-2" y="30" width="347" height="31"/>
-                                        <connections>
-                                            <action selector="angleChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="VgQ-Q2-5kf"/>
-                                        </connections>
                                     </slider>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zpj-UY-oVp" userLabel="Separator">
+                                <rect key="frame" x="0.0" y="199" width="375" height="1"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="G09-tv-L1X"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="cjT-Vk-ZIi" secondAttribute="trailing" id="2m1-Ns-Uqg"/>
-                            <constraint firstItem="HB5-ZB-PgP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="3M2-DL-krw"/>
-                            <constraint firstItem="ugW-ik-R52" firstAttribute="top" secondItem="cjT-Vk-ZIi" secondAttribute="bottom" id="54z-5O-H1u"/>
-                            <constraint firstItem="ugW-ik-R52" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Bdt-hn-Vow"/>
-                            <constraint firstItem="ugW-ik-R52" firstAttribute="centerX" secondItem="cjT-Vk-ZIi" secondAttribute="centerX" id="HnV-Nj-wXt"/>
-                            <constraint firstItem="cjT-Vk-ZIi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="QPJ-EN-hJq"/>
-                            <constraint firstItem="ugW-ik-R52" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZpT-U9-tda"/>
-                            <constraint firstItem="cjT-Vk-ZIi" firstAttribute="top" secondItem="HB5-ZB-PgP" secondAttribute="bottom" constant="8" symbolic="YES" id="b1T-KU-nTC"/>
-                            <constraint firstItem="HB5-ZB-PgP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xbA-if-upR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Isq-9b-4oK" secondAttribute="trailing" id="60a-mP-Fhi"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Isq-9b-4oK" secondAttribute="leading" id="FGf-Tv-eRl"/>
+                            <constraint firstItem="Tsk-86-QTF" firstAttribute="centerX" secondItem="oHr-Xy-gHZ" secondAttribute="centerX" id="Hn9-gy-yjl"/>
+                            <constraint firstAttribute="bottom" secondItem="zpj-UY-oVp" secondAttribute="bottom" id="Vrs-GW-anJ"/>
+                            <constraint firstItem="Isq-9b-4oK" firstAttribute="top" secondItem="Tsk-86-QTF" secondAttribute="bottom" constant="8" symbolic="YES" id="Y8e-Qq-VnV"/>
+                            <constraint firstItem="Tsk-86-QTF" firstAttribute="top" secondItem="oHr-Xy-gHZ" secondAttribute="topMargin" constant="50" id="abT-IM-0Jx"/>
+                            <constraint firstItem="zpj-UY-oVp" firstAttribute="leading" secondItem="oHr-Xy-gHZ" secondAttribute="leading" id="dcE-W5-MaV"/>
+                            <constraint firstAttribute="centerXWithinMargins" secondItem="zpj-UY-oVp" secondAttribute="centerX" id="hzm-jR-JVd"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="kxD-vy-6Q2" appends="YES" id="e92-Z1-dd8"/>
-                        </connections>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QpW-JV-7I8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-801" y="-72"/>
+        </scene>
+        <!--Tree View Controller-->
+        <scene sceneID="APm-PS-Vaa">
+            <objects>
+                <viewController id="UsE-Ok-E78" customClass="TreeViewController" customModule="PythagorasTree" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="330-X6-h5f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="467"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="53r-Ks-GwV" customClass="PythTreeView" customModule="PythagorasTree" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="467"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="53r-Ks-GwV" secondAttribute="trailing" id="McY-0i-Anc"/>
+                            <constraint firstAttribute="bottom" secondItem="53r-Ks-GwV" secondAttribute="bottom" id="YHY-Tz-dcj"/>
+                            <constraint firstItem="53r-Ks-GwV" firstAttribute="top" secondItem="330-X6-h5f" secondAttribute="top" id="coh-ce-Oae"/>
+                            <constraint firstItem="53r-Ks-GwV" firstAttribute="leading" secondItem="330-X6-h5f" secondAttribute="leading" id="m9Q-V9-eNI"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="angle" destination="nUh-7t-wcF" id="t9L-Vn-S0X"/>
-                        <outlet property="pythView" destination="ugW-ik-R52" id="T61-Gg-q3M"/>
+                        <outlet property="treeView" destination="53r-Ks-GwV" id="fL3-XM-j7A"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <pinchGestureRecognizer id="1FN-lN-iLW">
-                    <connections>
-                        <action selector="startLineChanged:" destination="BYZ-38-t0r" id="OyF-aA-uBv"/>
-                    </connections>
-                </pinchGestureRecognizer>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="kxD-vy-6Q2">
-                    <connections>
-                        <action selector="originChanged:" destination="BYZ-38-t0r" id="ggB-7j-SMP"/>
-                    </connections>
-                </panGestureRecognizer>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WL3-wd-Msi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-927.20000000000005" y="-62.518740629685162"/>
+            <point key="canvasLocation" x="-1199.2" y="387.25637181409297"/>
         </scene>
     </scenes>
 </document>

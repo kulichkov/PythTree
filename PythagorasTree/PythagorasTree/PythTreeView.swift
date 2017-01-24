@@ -16,12 +16,13 @@ fileprivate enum Constants {
 
 //@IBDesignable
 class PythTreeView: UIView {
-    @IBInspectable
+    fileprivate var snapshot: UIView?
     var origin = CGPoint(x: 0.0, y: 0.0) {
         didSet {
             setNeedsDisplay()
         }
     }
+    @IBInspectable
     var madeBySquares: Bool = true {
         didSet {
             setNeedsDisplay()
@@ -161,6 +162,28 @@ class PythTreeView: UIView {
             drawLineTree(origin: self.origin,
                          length: startLength,
                          angle: Constants.piDivByTwo)
+        }
+    }
+
+    func originMove(_ sender: UIPanGestureRecognizer) {
+        switch sender.state {
+        case .began:
+            snapshot = self.snapshotView(afterScreenUpdates: false)
+            snapshot?.alpha = 0.8
+            self.addSubview(snapshot!)
+        case .changed:
+            let translation = sender.translation(in: self)
+            if translation == CGPoint.zero { break }
+            snapshot?.center.x += translation.x
+            snapshot?.center.y += translation.y
+            sender.setTranslation(CGPoint.zero, in: self)
+        case .ended:
+            origin.x += snapshot!.frame.origin.x
+            origin.y += snapshot!.frame.origin.y
+            snapshot!.removeFromSuperview()
+            snapshot = nil
+        default:
+            break
         }
     }
 }
