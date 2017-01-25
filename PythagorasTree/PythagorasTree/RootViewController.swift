@@ -18,6 +18,7 @@ class RootViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        // Make square of pythTreeView
         pythTreeViewHeight.constant = view.frame.width
     }
 }
