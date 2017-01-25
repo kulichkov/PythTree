@@ -16,6 +16,15 @@ class TreeViewController: UIViewController {
         // Do any additional setup after loading the view.
         treeView.addGestureRecognizer(UIPinchGestureRecognizer(target: treeView, action: #selector(PythTreeView.scaleChanged)))
         treeView.addGestureRecognizer(UIPanGestureRecognizer(target: treeView, action: #selector(PythTreeView.originMove)))
+        let doubleTapGestureRecognizer = UITapGestureRecognizer(target: treeView, action: #selector(PythTreeView.originReset))
+        doubleTapGestureRecognizer.numberOfTapsRequired = 2
+        doubleTapGestureRecognizer.numberOfTouchesRequired = 1
+        treeView.addGestureRecognizer(doubleTapGestureRecognizer)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        //Move origin to center
+        treeView.origin = CGPoint(x: treeView.bounds.midX, y: treeView.bounds.midY + treeView.bounds.midY/3)
     }
 
     override func didReceiveMemoryWarning() {

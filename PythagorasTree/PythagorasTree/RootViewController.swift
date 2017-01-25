@@ -11,8 +11,7 @@ import UIKit
 class RootViewController: UIViewController {
 
     fileprivate enum Constants {
-        static let sequeSettingsView = "SequeSettingsView"
-        static let sequeTreeView = "SequeTreeView"
+        static let segueSettingsView = "SegueSettingsView"
+        static let segueTreeView = "SegueTreeView"
     }
-
 }

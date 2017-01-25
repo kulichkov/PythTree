@@ -160,10 +160,14 @@ class PythTreeView: UIView {
                            length: startLength,
                            angle: Constants.zero)
         } else {
-            drawLineTree(origin: self.origin,
+            drawLineTree(origin: origin,
                          length: startLength,
                          angle: Constants.piDivByTwo)
         }
+    }
+
+    func originReset(_ sender: UITapGestureRecognizer) {
+        if sender.state == .ended { origin = sender.location(in: self) }
     }
 
     func scaleChanged(_ sender: UIPinchGestureRecognizer) {

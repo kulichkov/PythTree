@@ -26,7 +26,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B3S-75-Plw">
                                 <rect key="frame" x="0.0" y="200" width="375" height="467"/>
                                 <connections>
-                                    <segue destination="UsE-Ok-E78" kind="embed" identifier="SequeTreeView" id="h6y-fV-rga"/>
+                                    <segue destination="UsE-Ok-E78" kind="embed" identifier="SegueTreeView" id="h6y-fV-rga"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bL4-FR-xMy">
@@ -60,6 +60,10 @@
         <scene sceneID="c8a-60-7iF">
             <objects>
                 <viewController id="Nh4-q8-RM3" customClass="SettingsViewController" customModule="PythagorasTree" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ifB-LI-ezV"/>
+                        <viewControllerLayoutGuide type="bottom" id="1vz-Xm-W7k"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oHr-Xy-gHZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -119,12 +123,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QpW-JV-7I8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-801" y="-72"/>
+            <point key="canvasLocation" x="-745" y="-112"/>
         </scene>
         <!--Tree View Controller-->
         <scene sceneID="APm-PS-Vaa">
             <objects>
                 <viewController id="UsE-Ok-E78" customClass="TreeViewController" customModule="PythagorasTree" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7qE-rd-0SN"/>
+                        <viewControllerLayoutGuide type="bottom" id="urX-fe-TZs"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="330-X6-h5f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="467"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -148,7 +156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WL3-wd-Msi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1199.2" y="387.25637181409297"/>
+            <point key="canvasLocation" x="-1199" y="357"/>
         </scene>
     </scenes>
 </document>
