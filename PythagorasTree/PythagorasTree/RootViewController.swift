@@ -9,9 +9,15 @@
 import UIKit
 
 class RootViewController: UIViewController {
+    @IBOutlet weak var pythTreeViewHeight: NSLayoutConstraint!
 
     fileprivate enum Constants {
         static let segueSettingsView = "SegueSettingsView"
         static let segueTreeView = "SegueTreeView"
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        pythTreeViewHeight.constant = view.frame.width
     }
 }
