@@ -170,6 +170,16 @@ class PythTreeView: UIView {
         if sender.state == .ended { origin = sender.location(in: self) }
     }
 
+    func angleChanged(_ sender: UIRotationGestureRecognizer) {
+        if sender.state == .changed {
+            let newAddedAngle = addedAngle + sender.rotation
+            if newAddedAngle > -0.5 && newAddedAngle < 0.5 {
+                addedAngle = newAddedAngle
+            }
+            sender.rotation = Constants.zero
+        }
+    }
+
     func scaleChanged(_ sender: UIPinchGestureRecognizer) {
         switch sender.state {
         case .began:

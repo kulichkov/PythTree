@@ -65,7 +65,6 @@
 				696125921E37A97600B6A193 /* RootViewController.swift */,
 				696125941E37AA1A00B6A193 /* SettingsViewController.swift */,
 				696125961E37AB1600B6A193 /* TreeViewController.swift */,
-				698966571E28109B00910F3A /* PythViewController.swift */,
 				6997AA281DF0452900164BD1 /* PythTreeView.swift */,
 				6997AA191DF040F200164BD1 /* Main.storyboard */,
 				6997AA271DF043E600164BD1 /* Supporting Files */,
@@ -77,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				6997AA151DF040F200164BD1 /* AppDelegate.swift */,
+				698966571E28109B00910F3A /* PythViewController.swift */,
 				6997AA1C1DF040F200164BD1 /* Assets.xcassets */,
 				6997AA1E1DF040F200164BD1 /* LaunchScreen.storyboard */,
 				6997AA211DF040F200164BD1 /* Info.plist */,
