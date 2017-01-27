@@ -10,6 +10,17 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
 
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var fillSquaresSwitch: UISwitch!
+    @IBOutlet var sliderValueLabels: [UILabel]!
+    @IBOutlet var sliders: [UISlider]!
+    @IBOutlet var branchColorSliders: [UISlider]!
+    @IBOutlet weak var branchColorSlidersValueLable: UILabel!
+    @IBOutlet var leafColorSliders: [UISlider]!
+    @IBOutlet weak var leafColorSlidersValueLable: UILabel!
+    @IBOutlet var backgroundColorSliders: [UISlider]!
+    @IBOutlet weak var backgroundColorSlidersValueLable: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
