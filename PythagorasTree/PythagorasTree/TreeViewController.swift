@@ -42,6 +42,7 @@ class TreeViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         //Move origin to center
         treeView.origin = CGPoint(x: treeView.bounds.midX, y: treeView.bounds.height - treeView.bounds.midY/4)
 
