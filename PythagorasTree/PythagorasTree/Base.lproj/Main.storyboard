@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Tree View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="RootViewController" customModule="PythagorasTree" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TreeViewController" customModule="PythagorasTree" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -22,19 +22,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B3S-75-Plw">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B3S-75-Plw" customClass="PythTreeView" customModule="PythagorasTree" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="6Pf-eu-Ftj"/>
                                 </constraints>
-                                <connections>
-                                    <segue destination="UsE-Ok-E78" kind="embed" identifier="SegueTreeView" id="h6y-fV-rga"/>
-                                </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CGb-g3-6rQ">
                                 <rect key="frame" x="0.0" y="300" width="320" height="268"/>
                                 <connections>
-                                    <segue destination="Qam-FX-918" kind="embed" id="il0-yr-4Y3"/>
+                                    <segue destination="Qam-FX-918" kind="embed" identifier="DisplaySettingsView" id="il0-yr-4Y3"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -50,6 +47,9 @@
                             <constraint firstItem="CGb-g3-6rQ" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="xwR-to-HSk"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="treeView" destination="B3S-75-Plw" id="6hc-F0-owv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -119,8 +119,11 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MkM-Ji-5Yq">
+                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MkM-Ji-5Yq">
                                                             <rect key="frame" x="235" y="0.0" width="51" height="31"/>
+                                                            <connections>
+                                                                <action selector="switchChanged:" destination="Qam-FX-918" eventType="valueChanged" id="g9q-Qw-Uqe"/>
+                                                            </connections>
                                                         </switch>
                                                     </subviews>
                                                 </stackView>
@@ -520,7 +523,7 @@
                     <connections>
                         <outlet property="backgroundColorSlidersValueLable" destination="GHe-tc-Ujd" id="Pcw-ck-HcR"/>
                         <outlet property="branchColorSlidersValueLable" destination="mMS-a9-oOo" id="Rdj-Uq-DQw"/>
-                        <outlet property="fillSquaresSwitch" destination="MkM-Ji-5Yq" id="s8k-sO-bxM"/>
+                        <outlet property="fillSquaresSwitch" destination="MkM-Ji-5Yq" id="XWA-aa-w84"/>
                         <outlet property="leafColorSlidersValueLable" destination="5Il-Gl-7dR" id="qGa-4c-HAx"/>
                         <outlet property="segmentedControl" destination="8y6-mM-aRw" id="uR4-cM-Gr7"/>
                         <outletCollection property="sliderValueLabels" destination="M9J-0R-IVK" collectionClass="NSMutableArray" id="aUc-6m-Njk"/>
@@ -546,40 +549,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qnK-kN-KhZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-224.80000000000001" y="-317.09145427286359"/>
-        </scene>
-        <!--Tree View Controller-->
-        <scene sceneID="APm-PS-Vaa">
-            <objects>
-                <viewController id="UsE-Ok-E78" customClass="TreeViewController" customModule="PythagorasTree" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7qE-rd-0SN"/>
-                        <viewControllerLayoutGuide type="bottom" id="urX-fe-TZs"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="330-X6-h5f">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="53r-Ks-GwV" customClass="PythTreeView" customModule="PythagorasTree" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
-                                <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="0.0" colorSpace="calibratedRGB"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="53r-Ks-GwV" secondAttribute="trailing" id="McY-0i-Anc"/>
-                            <constraint firstAttribute="bottom" secondItem="53r-Ks-GwV" secondAttribute="bottom" id="YHY-Tz-dcj"/>
-                            <constraint firstItem="53r-Ks-GwV" firstAttribute="top" secondItem="330-X6-h5f" secondAttribute="top" id="coh-ce-Oae"/>
-                            <constraint firstItem="53r-Ks-GwV" firstAttribute="leading" secondItem="330-X6-h5f" secondAttribute="leading" id="m9Q-V9-eNI"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="treeView" destination="53r-Ks-GwV" id="fL3-XM-j7A"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WL3-wd-Msi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1199.5" y="356.5"/>
+            <point key="canvasLocation" x="-379" y="-668"/>
         </scene>
     </scenes>
 </document>

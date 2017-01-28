@@ -8,6 +8,10 @@
 
 import UIKit
 
+fileprivate enum Constants {
+    static let segueSettingsView = "DisplaySettingsView"
+}
+
 extension UIView {
     func applyGradient(colors: [UIColor]) -> Void {
         self.applyGradient(colors: colors, locations: nil)
@@ -24,7 +28,18 @@ extension UIView {
 
 class TreeViewController: UIViewController {
 
-    @IBOutlet weak var treeView: PythTreeView!
+    @IBOutlet fileprivate weak var treeView: PythTreeView!
+    var fillSquares: Bool = false {
+        didSet {
+            treeView.fillSquare = fillSquares
+        }
+    }
+    var madeBySquares: Bool = true {
+        didSet {
+            treeView.madeBySquares = madeBySquares
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -58,15 +73,15 @@ class TreeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let identifier = segue.identifier {
+            switch identifier {
+            case Constants.segueSettingsView:
+                (segue.destination as? SettingsViewController)?.treeViewController = self
+            default:
+                break
+            }
+        }
     }
-    */
 
 }

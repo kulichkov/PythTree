@@ -35,7 +35,9 @@ class SettingsViewController: UITableViewController {
         }
     }
 
-    weak var treeViewController: TreeViewController!
+    // MARK: - View life cycle
+
+    weak var treeViewController: TreeViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
         updateSliderValueLabels()
@@ -47,13 +49,20 @@ class SettingsViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: - IBActions
+
     @IBAction func elementTypeSegmentedControlChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 1:
+            treeViewController?.madeBySquares = false
             fillSquaresSwitchIsVisible = false
         default:
+            treeViewController?.madeBySquares = true
             fillSquaresSwitchIsVisible = true
         }
+    }
+    @IBAction func switchChanged(_ sender: UISwitch) {
+            treeViewController?.fillSquares = sender.isOn
     }
 
     // MARK: - Helpers
