@@ -89,6 +89,9 @@
                                                                 <segment title="Lines"/>
                                                             </segments>
                                                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <connections>
+                                                                <action selector="elementTypeSegmentedControlChanged:" destination="Qam-FX-918" eventType="valueChanged" id="gnF-7U-XgH"/>
+                                                            </connections>
                                                         </segmentedControl>
                                                     </subviews>
                                                 </stackView>
@@ -154,7 +157,7 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Pwn-03-eM8">
+                                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.10000000000000001" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Pwn-03-eM8">
                                                                     <rect key="frame" x="70" y="0.0" width="104" height="31"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="100" id="OeE-4a-ZHw"/>
@@ -197,7 +200,7 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <slider opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="x47-PW-msx">
+                                                                <slider opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="30" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="x47-PW-msx">
                                                                     <rect key="frame" x="43.5" y="0.0" width="104" height="31"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="100" id="KGz-bF-9QR"/>
@@ -240,7 +243,7 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <slider opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ju5-G9-kzF">
+                                                                <slider opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ju5-G9-kzF">
                                                                     <rect key="frame" x="44" y="0.0" width="104" height="31"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="100" id="ype-2D-3WF"/>
@@ -283,7 +286,7 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <slider opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="8wX-Bs-RNd">
+                                                                <slider opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="10.1" maxValue="29.899999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="8wX-Bs-RNd">
                                                                     <rect key="frame" x="64.5" y="0.0" width="104" height="31"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="100" id="mzZ-15-1hI"/>
@@ -326,7 +329,7 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <slider opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="RI2-yK-nT9">
+                                                                <slider opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-0.5" maxValue="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="RI2-yK-nT9">
                                                                     <rect key="frame" x="102" y="0.0" width="104" height="31"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="100" id="l8B-EQ-jXM"/>
@@ -374,13 +377,13 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ZKz-Xp-lmR">
                                                             <rect key="frame" x="154" y="0.0" width="130" height="34"/>
                                                             <subviews>
-                                                                <slider opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="I6N-99-RUG">
+                                                                <slider opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="110" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="I6N-99-RUG">
                                                                     <rect key="frame" x="-2" y="0.0" width="44" height="35"/>
                                                                 </slider>
-                                                                <slider opaque="NO" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="N7M-c7-yFQ">
+                                                                <slider opaque="NO" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="N7M-c7-yFQ">
                                                                     <rect key="frame" x="43" y="0.0" width="44" height="35"/>
                                                                 </slider>
-                                                                <slider opaque="NO" tag="2" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="vOP-yF-pSw">
+                                                                <slider opaque="NO" tag="2" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="vOP-yF-pSw">
                                                                     <rect key="frame" x="88" y="0.0" width="44" height="35"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="40" id="yts-Yc-rh4"/>
@@ -427,13 +430,13 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="g1B-hg-Nud">
                                                             <rect key="frame" x="154" y="0.0" width="130" height="34"/>
                                                             <subviews>
-                                                                <slider opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="bQ3-SC-FlA">
+                                                                <slider opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="64" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="bQ3-SC-FlA">
                                                                     <rect key="frame" x="-2" y="0.0" width="44" height="35"/>
                                                                 </slider>
-                                                                <slider opaque="NO" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Lss-tF-nTb">
+                                                                <slider opaque="NO" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="175" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="Lss-tF-nTb">
                                                                     <rect key="frame" x="43" y="0.0" width="44" height="35"/>
                                                                 </slider>
-                                                                <slider opaque="NO" tag="2" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="8uD-Ow-S3X">
+                                                                <slider opaque="NO" tag="2" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="8uD-Ow-S3X">
                                                                     <rect key="frame" x="88" y="0.0" width="44" height="35"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="40" id="m71-d7-0hG"/>
@@ -480,13 +483,13 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Qdw-4L-Tf0">
                                                             <rect key="frame" x="154" y="0.0" width="130" height="34"/>
                                                             <subviews>
-                                                                <slider opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="eIb-EA-qQk">
+                                                                <slider opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="eIb-EA-qQk">
                                                                     <rect key="frame" x="-2" y="0.0" width="44" height="35"/>
                                                                 </slider>
-                                                                <slider opaque="NO" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="F16-kt-0VG">
+                                                                <slider opaque="NO" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="150" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="F16-kt-0VG">
                                                                     <rect key="frame" x="43" y="0.0" width="44" height="35"/>
                                                                 </slider>
-                                                                <slider opaque="NO" tag="2" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="SbE-IL-OIv">
+                                                                <slider opaque="NO" tag="2" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="255" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="SbE-IL-OIv">
                                                                     <rect key="frame" x="88" y="0.0" width="44" height="35"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="40" id="pfF-9M-Yww"/>
