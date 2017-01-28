@@ -42,13 +42,13 @@ class PythTreeView: UIView {
         }
     }
     @IBInspectable
-    var lengthChangeColor: CGFloat = 5.0 {
+    var lengthChangeColor: CGFloat = 15.0 {
         didSet {
             setNeedsDisplay()
         }
     }
     @IBInspectable
-    var endLength: CGFloat = 1.0 {
+    var endLength: CGFloat = 5.0 {
         didSet {
             setNeedsDisplay()
         }
@@ -60,13 +60,13 @@ class PythTreeView: UIView {
         }
     }
     @IBInspectable
-    var leafColor: UIColor = UIColor.black {
+    var leafColor: UIColor = UIColor(red: 64/255, green: 175/255, blue: 40/55, alpha: 1.0) {
         didSet {
             setNeedsDisplay()
         }
     }
     @IBInspectable
-    var branchColor: UIColor = UIColor.black {
+    var branchColor: UIColor = UIColor(red: 110/255, green: 50/255, blue: 40/55, alpha: 1.0) {
         didSet {
             setNeedsDisplay()
         }

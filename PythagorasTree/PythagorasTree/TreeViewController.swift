@@ -39,6 +39,41 @@ class TreeViewController: UIViewController {
             treeView.madeBySquares = madeBySquares
         }
     }
+    var lineWidth: CGFloat = 1.0 {
+        didSet {
+            treeView.lineWidth = lineWidth
+        }
+    }
+    var startLength: CGFloat = 40.0 {
+        didSet {
+            treeView.startLength = startLength
+        }
+    }
+    var endLength: CGFloat = 5.0 {
+        didSet {
+            treeView.endLength = endLength
+        }
+    }
+    var addedAngle: CGFloat = 0.0 {
+        didSet {
+            treeView.addedAngle = addedAngle
+        }
+    }
+    var lengthChangeColor: CGFloat = 15.0 {
+        didSet {
+            treeView.lengthChangeColor = lengthChangeColor
+        }
+    }
+    var leafColor: UIColor = UIColor(red: 64/255, green: 175/255, blue: 40/55, alpha: 1.0) {
+        didSet {
+            treeView.leafColor = leafColor
+        }
+    }
+    var branchColor: UIColor = UIColor(red: 110/255, green: 50/255, blue: 40/55, alpha: 1.0) {
+        didSet {
+            treeView.branchColor = branchColor
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,9 +97,9 @@ class TreeViewController: UIViewController {
         treeView.origin = CGPoint(x: treeView.bounds.midX, y: treeView.bounds.height - treeView.bounds.midY/4)
 
         //Gradient background
-        let blue = UIColor(colorLiteralRed: 78/255.0, green: 208/255.0, blue: 255/255.0, alpha: 1.0)
+        let blue = UIColor(colorLiteralRed: 30/255.0, green: 150/255.0, blue: 255/255.0, alpha: 1.0)
         let colors = [blue, UIColor.white]
-        self.view.applyGradient(colors: colors, locations: [0.0, 0.8])
+        self.view.applyGradient(colors: colors, locations: [0.0, 0.5])
 
     }
 
