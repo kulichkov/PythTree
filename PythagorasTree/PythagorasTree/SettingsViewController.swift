@@ -20,7 +20,17 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var leafColorSlidersValueLable: UILabel!
     @IBOutlet var backgroundColorSliders: [UISlider]!
     @IBOutlet weak var backgroundColorSlidersValueLable: UILabel!
-
+    enum Row: Int {
+        case elementType, fillSquares, lineWidth, firstLineLength, lastLineLength, leafLength, angle, branchColor, leafColor, backgroundColor
+    }
+    enum Slider: Int {
+        case lineWidth, firstLineLength, lastLineLength, leafLength, angle
+    }
+    enum ColorSlider: Int {
+        case red, green, blue
+    }
+    var fillSquaresSwitchIsVisible = true
+    weak var treeViewController: TreeViewController!
     override func viewDidLoad() {
         super.viewDidLoad()
 

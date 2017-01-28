@@ -38,7 +38,7 @@ class TreeViewController: UIViewController {
         doubleTapGestureRecognizer.numberOfTouchesRequired = 1
         treeView.addGestureRecognizer(doubleTapGestureRecognizer)
         // Adding RotationGestureRecognizer
-        treeView.addGestureRecognizer(UIRotationGestureRecognizer(target: treeView, action: #selector(PythTreeView.angleChanged)))
+        //treeView.addGestureRecognizer(UIRotationGestureRecognizer(target: treeView, action: #selector(PythTreeView.angleChanged)))
     }
 
     override func viewDidAppear(_ animated: Bool) {
