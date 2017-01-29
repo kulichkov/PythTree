@@ -23,17 +23,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7il-3X-myJ" userLabel="Background">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="250"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B3S-75-Plw" customClass="PythTreeView" customModule="PythagorasTree" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="250"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="6Pf-eu-Ftj"/>
+                                    <constraint firstAttribute="height" constant="250" id="6Pf-eu-Ftj"/>
                                 </constraints>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CGb-g3-6rQ">
-                                <rect key="frame" x="0.0" y="300" width="320" height="268"/>
+                                <rect key="frame" x="0.0" y="250" width="320" height="318"/>
                                 <connections>
                                     <segue destination="Qam-FX-918" kind="embed" identifier="DisplaySettingsView" id="il0-yr-4Y3"/>
                                 </connections>
@@ -62,7 +62,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1200" y="-684.50704225352115"/>
+            <point key="canvasLocation" x="-1241" y="-669"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="p7F-jY-ysW">
