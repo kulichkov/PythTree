@@ -64,6 +64,40 @@ class SettingsViewController: UITableViewController {
     @IBAction func switchChanged(_ sender: UISwitch) {
             treeViewController?.fillSquares = sender.isOn
     }
+    @IBAction func sliderChanged(_ sender: UISlider) {
+        let slidersArray = sliders as NSArray
+        let slider = Slider(rawValue: slidersArray.index(of: sender))!
+        switch slider {
+        case .angle:
+            treeViewController?.addedAngle = CGFloat(sender.value)
+        case .firstLineLength:
+            treeViewController?.startLength = CGFloat(sender.value)
+        case .lastLineLength:
+            treeViewController?.endLength = CGFloat(sender.value)
+        case .leafLength:
+            treeViewController?.lengthChangeColor = CGFloat(sender.value)
+        case .lineWidth:
+            treeViewController?.lineWidth = CGFloat(sender.value)
+        }
+        updateSliderValueLabel(slider)
+    }
+    @IBAction func branchColorSliderChanged(_ sender: UISlider) {
+        let colorAndLabel = colorAndLabelForSliders(branchColorSliders)
+        treeViewController?.branchColor = colorAndLabel.color
+        branchColorSlidersValueLable.text = colorAndLabel.label
+    }
+    @IBAction func leafColorSliderChanged(_ sender: UISlider) {
+        let colorAndLabel = colorAndLabelForSliders(leafColorSliders)
+        treeViewController?.leafColor = colorAndLabel.color
+        leafColorSlidersValueLable.text = colorAndLabel.label
+    }
+    @IBAction func backgroundColorSliderChanged(_ sender: UISlider) {
+        let colorAndLabel = colorAndLabelForSliders(backgroundColorSliders)
+        treeViewController?.backgroundColor = colorAndLabel.color
+        backgroundColorSlidersValueLable.text = colorAndLabel.label
+    }
+
+
 
     // MARK: - Helpers
     func relayoutTableViewCells() {
@@ -89,11 +123,11 @@ class SettingsViewController: UITableViewController {
         }
     }
 
-    func colorAndLabelForSliders(_ sliders: [UISlider]) -> (color: CGColor, label: String) {
+    func colorAndLabelForSliders(_ sliders: [UISlider]) -> (color: UIColor, label: String) {
         let red = CGFloat(sliders[0].value)
         let green = CGFloat(sliders[1].value)
         let blue = CGFloat(sliders[2].value)
-        let color = UIColor(red: red/255.0, green: green/255.0, blue: blue/255.0, alpha: 1.0).cgColor
+        let color = UIColor(red: red/255.0, green: green/255.0, blue: blue/255.0, alpha: 1.0)
         let label = "RGB: \(Int(red)), \(Int(green)), \(Int(blue))"
         return (color: color, label: label)
     }

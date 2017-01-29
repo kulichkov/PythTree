@@ -22,6 +22,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7il-3X-myJ" userLabel="Background">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B3S-75-Plw" customClass="PythTreeView" customModule="PythagorasTree" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
                                 <constraints>
@@ -44,16 +48,21 @@
                             <constraint firstItem="CGb-g3-6rQ" firstAttribute="top" secondItem="B3S-75-Plw" secondAttribute="bottom" id="RTd-5n-j3d"/>
                             <constraint firstItem="CGb-g3-6rQ" firstAttribute="trailing" secondItem="B3S-75-Plw" secondAttribute="trailing" id="YuW-cY-gLG"/>
                             <constraint firstItem="B3S-75-Plw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="apT-mB-i5N"/>
+                            <constraint firstItem="7il-3X-myJ" firstAttribute="leading" secondItem="B3S-75-Plw" secondAttribute="leading" id="bOj-n4-nca"/>
+                            <constraint firstItem="7il-3X-myJ" firstAttribute="bottom" secondItem="B3S-75-Plw" secondAttribute="bottom" id="bqy-A6-HDv"/>
+                            <constraint firstItem="7il-3X-myJ" firstAttribute="top" secondItem="B3S-75-Plw" secondAttribute="top" id="kR2-es-dDb"/>
+                            <constraint firstItem="7il-3X-myJ" firstAttribute="trailing" secondItem="B3S-75-Plw" secondAttribute="trailing" id="t0w-QT-pTg"/>
                             <constraint firstItem="CGb-g3-6rQ" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="xwR-to-HSk"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="background" destination="7il-3X-myJ" id="JeT-qb-kan"/>
                         <outlet property="treeView" destination="B3S-75-Plw" id="6hc-F0-owv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1199.2" y="-684.10794602698661"/>
+            <point key="canvasLocation" x="-1200" y="-684.50704225352115"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="p7F-jY-ysW">
@@ -165,6 +174,9 @@
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="100" id="OeE-4a-ZHw"/>
                                                                     </constraints>
+                                                                    <connections>
+                                                                        <action selector="sliderChanged:" destination="Qam-FX-918" eventType="valueChanged" id="1V6-f4-Sga"/>
+                                                                    </connections>
                                                                 </slider>
                                                             </subviews>
                                                         </stackView>
@@ -208,6 +220,9 @@
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="100" id="KGz-bF-9QR"/>
                                                                     </constraints>
+                                                                    <connections>
+                                                                        <action selector="sliderChanged:" destination="Qam-FX-918" eventType="valueChanged" id="Snl-ew-aOZ"/>
+                                                                    </connections>
                                                                 </slider>
                                                             </subviews>
                                                         </stackView>
@@ -251,6 +266,9 @@
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="100" id="ype-2D-3WF"/>
                                                                     </constraints>
+                                                                    <connections>
+                                                                        <action selector="sliderChanged:" destination="Qam-FX-918" eventType="valueChanged" id="7q5-OV-2jz"/>
+                                                                    </connections>
                                                                 </slider>
                                                             </subviews>
                                                         </stackView>
@@ -294,6 +312,9 @@
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="100" id="mzZ-15-1hI"/>
                                                                     </constraints>
+                                                                    <connections>
+                                                                        <action selector="sliderChanged:" destination="Qam-FX-918" eventType="valueChanged" id="3Ez-cS-x1u"/>
+                                                                    </connections>
                                                                 </slider>
                                                             </subviews>
                                                         </stackView>
@@ -337,6 +358,9 @@
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="100" id="l8B-EQ-jXM"/>
                                                                     </constraints>
+                                                                    <connections>
+                                                                        <action selector="sliderChanged:" destination="Qam-FX-918" eventType="valueChanged" id="Z8b-el-DnC"/>
+                                                                    </connections>
                                                                 </slider>
                                                             </subviews>
                                                         </stackView>
@@ -382,15 +406,24 @@
                                                             <subviews>
                                                                 <slider opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="110" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="I6N-99-RUG">
                                                                     <rect key="frame" x="-2" y="0.0" width="44" height="35"/>
+                                                                    <connections>
+                                                                        <action selector="branchColorSliderChanged:" destination="Qam-FX-918" eventType="valueChanged" id="B6Z-gk-Lcr"/>
+                                                                    </connections>
                                                                 </slider>
                                                                 <slider opaque="NO" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="N7M-c7-yFQ">
                                                                     <rect key="frame" x="43" y="0.0" width="44" height="35"/>
+                                                                    <connections>
+                                                                        <action selector="branchColorSliderChanged:" destination="Qam-FX-918" eventType="valueChanged" id="1jN-0M-vj4"/>
+                                                                    </connections>
                                                                 </slider>
                                                                 <slider opaque="NO" tag="2" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="vOP-yF-pSw">
                                                                     <rect key="frame" x="88" y="0.0" width="44" height="35"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="40" id="yts-Yc-rh4"/>
                                                                     </constraints>
+                                                                    <connections>
+                                                                        <action selector="branchColorSliderChanged:" destination="Qam-FX-918" eventType="valueChanged" id="V2L-zF-Fdb"/>
+                                                                    </connections>
                                                                 </slider>
                                                             </subviews>
                                                         </stackView>
@@ -435,15 +468,24 @@
                                                             <subviews>
                                                                 <slider opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="64" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="bQ3-SC-FlA">
                                                                     <rect key="frame" x="-2" y="0.0" width="44" height="35"/>
+                                                                    <connections>
+                                                                        <action selector="leafColorSliderChanged:" destination="Qam-FX-918" eventType="valueChanged" id="9JA-YD-jy3"/>
+                                                                    </connections>
                                                                 </slider>
                                                                 <slider opaque="NO" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="175" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="Lss-tF-nTb">
                                                                     <rect key="frame" x="43" y="0.0" width="44" height="35"/>
+                                                                    <connections>
+                                                                        <action selector="leafColorSliderChanged:" destination="Qam-FX-918" eventType="valueChanged" id="OJs-KI-NlM"/>
+                                                                    </connections>
                                                                 </slider>
                                                                 <slider opaque="NO" tag="2" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="8uD-Ow-S3X">
                                                                     <rect key="frame" x="88" y="0.0" width="44" height="35"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="40" id="m71-d7-0hG"/>
                                                                     </constraints>
+                                                                    <connections>
+                                                                        <action selector="leafColorSliderChanged:" destination="Qam-FX-918" eventType="valueChanged" id="bBl-mt-Xa9"/>
+                                                                    </connections>
                                                                 </slider>
                                                             </subviews>
                                                         </stackView>
@@ -488,15 +530,24 @@
                                                             <subviews>
                                                                 <slider opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="eIb-EA-qQk">
                                                                     <rect key="frame" x="-2" y="0.0" width="44" height="35"/>
+                                                                    <connections>
+                                                                        <action selector="backgroundColorSliderChanged:" destination="Qam-FX-918" eventType="valueChanged" id="iD2-Os-mWO"/>
+                                                                    </connections>
                                                                 </slider>
                                                                 <slider opaque="NO" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="150" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="F16-kt-0VG">
                                                                     <rect key="frame" x="43" y="0.0" width="44" height="35"/>
+                                                                    <connections>
+                                                                        <action selector="backgroundColorSliderChanged:" destination="Qam-FX-918" eventType="valueChanged" id="o9G-FY-jUE"/>
+                                                                    </connections>
                                                                 </slider>
                                                                 <slider opaque="NO" tag="2" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="255" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="SbE-IL-OIv">
                                                                     <rect key="frame" x="88" y="0.0" width="44" height="35"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="40" id="pfF-9M-Yww"/>
                                                                     </constraints>
+                                                                    <connections>
+                                                                        <action selector="backgroundColorSliderChanged:" destination="Qam-FX-918" eventType="valueChanged" id="IqI-Gl-JF1"/>
+                                                                    </connections>
                                                                 </slider>
                                                             </subviews>
                                                         </stackView>

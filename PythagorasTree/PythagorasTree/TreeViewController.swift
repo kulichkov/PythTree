@@ -28,7 +28,9 @@ extension UIView {
 
 class TreeViewController: UIViewController {
 
+    @IBOutlet weak var background: UIView!
     @IBOutlet fileprivate weak var treeView: PythTreeView!
+    let gradientLayer = CAGradientLayer()
     var fillSquares: Bool = false {
         didSet {
             treeView.fillSquare = fillSquares
@@ -64,15 +66,28 @@ class TreeViewController: UIViewController {
             treeView.lengthChangeColor = lengthChangeColor
         }
     }
-    var leafColor: UIColor = UIColor(red: 64/255, green: 175/255, blue: 40/55, alpha: 1.0) {
+    var leafColor: UIColor = UIColor(red: 64/255, green: 175/255, blue: 40/255, alpha: 1.0) {
         didSet {
             treeView.leafColor = leafColor
         }
     }
-    var branchColor: UIColor = UIColor(red: 110/255, green: 50/255, blue: 40/55, alpha: 1.0) {
+    var branchColor: UIColor = UIColor(red: 110/255, green: 50/255, blue: 40/255, alpha: 1.0) {
         didSet {
             treeView.branchColor = branchColor
         }
+    }
+
+    var backgroundColor: UIColor = UIColor(colorLiteralRed: 30/255.0, green: 150/255.0, blue: 255/255.0, alpha: 1.0) {
+        didSet {
+            let colors = [backgroundColor, UIColor.white]
+            setUpGradientLayer(colors: colors, locations: [0.0, 0.8])
+        }
+    }
+
+    func setUpGradientLayer(colors: [UIColor], locations: [NSNumber]?) -> Void {
+        gradientLayer.frame = background.bounds
+        gradientLayer.colors = colors.map { $0.cgColor }
+        gradientLayer.locations = locations
     }
 
     override func viewDidLoad() {
@@ -97,9 +112,11 @@ class TreeViewController: UIViewController {
         treeView.origin = CGPoint(x: treeView.bounds.midX, y: treeView.bounds.height - treeView.bounds.midY/4)
 
         //Gradient background
-        let blue = UIColor(colorLiteralRed: 30/255.0, green: 150/255.0, blue: 255/255.0, alpha: 1.0)
-        let colors = [blue, UIColor.white]
-        self.view.applyGradient(colors: colors, locations: [0.0, 0.5])
+//        let colors = [backgroundColor, UIColor.white]
+//        view.applyGradient(colors: colors, locations: [0.0, 0.5])
+        let colors = [backgroundColor, UIColor.white]
+        setUpGradientLayer(colors: colors, locations: [0.0, 0.8])
+        background.layer.insertSublayer(gradientLayer, at: 0)
 
     }
 
