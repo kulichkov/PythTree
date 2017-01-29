@@ -12,16 +12,18 @@ fileprivate enum Constants {
     static let piDivByFour = CGFloat(M_PI_4)
     static let piDivByTwo = CGFloat(M_PI_2)
     static let zero: CGFloat = 0.0
+    static let scaleDefault: CGFloat = 1.0
 }
 
 //@IBDesignable
 class PythTreeView: UIView {
-    @IBInspectable
+    fileprivate var snapshot: UIView?
     var origin = CGPoint(x: 0.0, y: 0.0) {
         didSet {
             setNeedsDisplay()
         }
     }
+    @IBInspectable
     var madeBySquares: Bool = true {
         didSet {
             setNeedsDisplay()
@@ -40,13 +42,13 @@ class PythTreeView: UIView {
         }
     }
     @IBInspectable
-    var lengthChangeColor: CGFloat = 5.0 {
+    var lengthChangeColor: CGFloat = 15.0 {
         didSet {
             setNeedsDisplay()
         }
     }
     @IBInspectable
-    var endLength: CGFloat = 1.0 {
+    var endLength: CGFloat = 5.0 {
         didSet {
             setNeedsDisplay()
         }
@@ -58,13 +60,13 @@ class PythTreeView: UIView {
         }
     }
     @IBInspectable
-    var leafColor: UIColor = UIColor.black {
+    var leafColor: UIColor = UIColor(red: 64/255, green: 175/255, blue: 40/55, alpha: 1.0) {
         didSet {
             setNeedsDisplay()
         }
     }
     @IBInspectable
-    var branchColor: UIColor = UIColor.black {
+    var branchColor: UIColor = UIColor(red: 110/255, green: 50/255, blue: 40/55, alpha: 1.0) {
         didSet {
             setNeedsDisplay()
         }
@@ -158,9 +160,76 @@ class PythTreeView: UIView {
                            length: startLength,
                            angle: Constants.zero)
         } else {
-            drawLineTree(origin: self.origin,
+            drawLineTree(origin: origin,
                          length: startLength,
                          angle: Constants.piDivByTwo)
+        }
+    }
+
+    func originReset(_ sender: UITapGestureRecognizer) {
+        if sender.state == .ended { origin = sender.location(in: self) }
+    }
+
+    func angleChanged(_ sender: UIRotationGestureRecognizer) {
+        if sender.state == .changed {
+            let newAddedAngle = addedAngle + sender.rotation
+            if newAddedAngle > -0.5 && newAddedAngle < 0.5 {
+                addedAngle = newAddedAngle
+            }
+            sender.rotation = Constants.zero
+        }
+    }
+
+    func scaleChanged(_ sender: UIPinchGestureRecognizer) {
+        switch sender.state {
+        case .began:
+            snapshot = self.snapshotView(afterScreenUpdates: false)
+            snapshot?.alpha = 0.8
+            self.addSubview(snapshot!)
+        case .changed:
+            if sender.scale == Constants.zero {
+                break
+            }
+            let touchLocation = sender.location(in: self)
+            snapshot!.frame.size.height *= sender.scale
+            snapshot!.frame.size.width *= sender.scale
+            snapshot!.frame.origin.x = snapshot!.frame.origin.x * sender.scale + (1 - sender.scale) * touchLocation.x
+            snapshot!.frame.origin.y = snapshot!.frame.origin.y * sender.scale + (1 - sender.scale) * touchLocation.y
+            sender.scale = Constants.scaleDefault
+        case .ended:
+            let changedScale = snapshot!.frame.height / self.frame.height
+            origin.x = origin.x * changedScale + snapshot!.frame.origin.x
+            origin.y = origin.y * changedScale + snapshot!.frame.origin.y
+            snapshot!.removeFromSuperview()
+            snapshot = nil
+            // old code
+            startLength *= changedScale
+            endLength *= changedScale
+            lengthChangeColor *= changedScale
+        default:
+            break
+        }
+    }
+
+    func originMove(_ sender: UIPanGestureRecognizer) {
+        switch sender.state {
+        case .began:
+            snapshot = self.snapshotView(afterScreenUpdates: false)
+            snapshot?.alpha = 0.8
+            self.addSubview(snapshot!)
+        case .changed:
+            let translation = sender.translation(in: self)
+            if translation == CGPoint.zero { break }
+            snapshot?.center.x += translation.x
+            snapshot?.center.y += translation.y
+            sender.setTranslation(CGPoint.zero, in: self)
+        case .ended:
+            origin.x += snapshot!.frame.origin.x
+            origin.y += snapshot!.frame.origin.y
+            snapshot!.removeFromSuperview()
+            snapshot = nil
+        default:
+            break
         }
     }
 }

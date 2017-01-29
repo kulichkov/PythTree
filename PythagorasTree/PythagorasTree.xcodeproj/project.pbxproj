@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6910D9B21E394C9C00F73D2D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6910D9B11E394C9C00F73D2D /* SettingsViewController.swift */; };
+		696125971E37AB1600B6A193 /* TreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696125961E37AB1600B6A193 /* TreeViewController.swift */; };
 		698966581E28109B00910F3A /* PythViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698966571E28109B00910F3A /* PythViewController.swift */; };
 		6997AA161DF040F200164BD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6997AA151DF040F200164BD1 /* AppDelegate.swift */; };
 		6997AA1B1DF040F200164BD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6997AA191DF040F200164BD1 /* Main.storyboard */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6910D9B11E394C9C00F73D2D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		696125961E37AB1600B6A193 /* TreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeViewController.swift; sourceTree = "<group>"; };
 		698966571E28109B00910F3A /* PythViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PythViewController.swift; sourceTree = "<group>"; };
 		6997AA121DF040F200164BD1 /* PythagorasTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PythagorasTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6997AA151DF040F200164BD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,7 +60,9 @@
 		6997AA141DF040F200164BD1 /* PythagorasTree */ = {
 			isa = PBXGroup;
 			children = (
-				698966571E28109B00910F3A /* PythViewController.swift */,
+				6997AA151DF040F200164BD1 /* AppDelegate.swift */,
+				696125961E37AB1600B6A193 /* TreeViewController.swift */,
+				6910D9B11E394C9C00F73D2D /* SettingsViewController.swift */,
 				6997AA281DF0452900164BD1 /* PythTreeView.swift */,
 				6997AA191DF040F200164BD1 /* Main.storyboard */,
 				6997AA271DF043E600164BD1 /* Supporting Files */,
@@ -67,7 +73,7 @@
 		6997AA271DF043E600164BD1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6997AA151DF040F200164BD1 /* AppDelegate.swift */,
+				698966571E28109B00910F3A /* PythViewController.swift */,
 				6997AA1C1DF040F200164BD1 /* Assets.xcassets */,
 				6997AA1E1DF040F200164BD1 /* LaunchScreen.storyboard */,
 				6997AA211DF040F200164BD1 /* Info.plist */,
@@ -150,7 +156,9 @@
 			files = (
 				698966581E28109B00910F3A /* PythViewController.swift in Sources */,
 				6997AA161DF040F200164BD1 /* AppDelegate.swift in Sources */,
+				696125971E37AB1600B6A193 /* TreeViewController.swift in Sources */,
 				6997AA291DF0452900164BD1 /* PythTreeView.swift in Sources */,
+				6910D9B21E394C9C00F73D2D /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,9 +286,10 @@
 				DEVELOPMENT_TEAM = PY3Q8L7FLF;
 				INFOPLIST_FILE = PythagorasTree/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kulichkov.swift.PythagorasTree;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kulichkov.swift.PythTree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -291,9 +300,10 @@
 				DEVELOPMENT_TEAM = PY3Q8L7FLF;
 				INFOPLIST_FILE = PythagorasTree/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kulichkov.swift.PythagorasTree;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kulichkov.swift.PythTree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
