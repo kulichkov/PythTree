@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:PythagorasTree.xcodeproj">
+      location = "self:/Users/kulichkov/Developer/2016/PythagorasTree/PythagorasTree/PythTree.xcodeproj">
    </FileRef>
 </Workspace>

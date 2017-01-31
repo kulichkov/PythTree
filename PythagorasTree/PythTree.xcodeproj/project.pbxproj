@@ -21,7 +21,7 @@
 		6910D9B11E394C9C00F73D2D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		696125961E37AB1600B6A193 /* TreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeViewController.swift; sourceTree = "<group>"; };
 		698966571E28109B00910F3A /* PythViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PythViewController.swift; sourceTree = "<group>"; };
-		6997AA121DF040F200164BD1 /* PythagorasTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PythagorasTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6997AA121DF040F200164BD1 /* PythTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PythTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6997AA151DF040F200164BD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6997AA1A1DF040F200164BD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6997AA1C1DF040F200164BD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -44,7 +44,7 @@
 		6997AA091DF040F200164BD1 = {
 			isa = PBXGroup;
 			children = (
-				6997AA141DF040F200164BD1 /* PythagorasTree */,
+				6997AA141DF040F200164BD1 /* PythTree */,
 				6997AA131DF040F200164BD1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,12 +52,12 @@
 		6997AA131DF040F200164BD1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6997AA121DF040F200164BD1 /* PythagorasTree.app */,
+				6997AA121DF040F200164BD1 /* PythTree.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6997AA141DF040F200164BD1 /* PythagorasTree */ = {
+		6997AA141DF040F200164BD1 /* PythTree */ = {
 			isa = PBXGroup;
 			children = (
 				6997AA151DF040F200164BD1 /* AppDelegate.swift */,
@@ -67,6 +67,7 @@
 				6997AA191DF040F200164BD1 /* Main.storyboard */,
 				6997AA271DF043E600164BD1 /* Supporting Files */,
 			);
+			name = PythTree;
 			path = PythagorasTree;
 			sourceTree = "<group>";
 		};
@@ -84,9 +85,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6997AA111DF040F200164BD1 /* PythagorasTree */ = {
+		6997AA111DF040F200164BD1 /* PythTree */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6997AA241DF040F200164BD1 /* Build configuration list for PBXNativeTarget "PythagorasTree" */;
+			buildConfigurationList = 6997AA241DF040F200164BD1 /* Build configuration list for PBXNativeTarget "PythTree" */;
 			buildPhases = (
 				6997AA0E1DF040F200164BD1 /* Sources */,
 				6997AA0F1DF040F200164BD1 /* Frameworks */,
@@ -96,9 +97,9 @@
 			);
 			dependencies = (
 			);
-			name = PythagorasTree;
+			name = PythTree;
 			productName = PythagorasTree;
-			productReference = 6997AA121DF040F200164BD1 /* PythagorasTree.app */;
+			productReference = 6997AA121DF040F200164BD1 /* PythTree.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -118,7 +119,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6997AA0D1DF040F200164BD1 /* Build configuration list for PBXProject "PythagorasTree" */;
+			buildConfigurationList = 6997AA0D1DF040F200164BD1 /* Build configuration list for PBXProject "PythTree" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -131,7 +132,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6997AA111DF040F200164BD1 /* PythagorasTree */,
+				6997AA111DF040F200164BD1 /* PythTree */,
 			);
 		};
 /* End PBXProject section */
@@ -310,7 +311,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6997AA0D1DF040F200164BD1 /* Build configuration list for PBXProject "PythagorasTree" */ = {
+		6997AA0D1DF040F200164BD1 /* Build configuration list for PBXProject "PythTree" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6997AA221DF040F200164BD1 /* Debug */,
@@ -319,7 +320,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6997AA241DF040F200164BD1 /* Build configuration list for PBXNativeTarget "PythagorasTree" */ = {
+		6997AA241DF040F200164BD1 /* Build configuration list for PBXNativeTarget "PythTree" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6997AA251DF040F200164BD1 /* Debug */,
