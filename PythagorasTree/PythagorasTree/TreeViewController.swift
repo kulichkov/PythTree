@@ -77,7 +77,7 @@ class TreeViewController: UIViewController {
         }
     }
 
-    var backgroundColor: UIColor = UIColor(colorLiteralRed: 30/255.0, green: 150/255.0, blue: 255/255.0, alpha: 1.0) {
+    var backgroundColor: UIColor = UIColor(red: 30/255.0, green: 150/255.0, blue: 255/255.0, alpha: 1.0) {
         didSet {
             let colors = [backgroundColor, UIColor.white]
             setUpGradientLayer(colors: colors, locations: [0.0, 0.8])

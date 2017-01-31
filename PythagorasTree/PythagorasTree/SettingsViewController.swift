@@ -41,7 +41,7 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateSliderValueLabels()
-
+        updateSlidersColorLabels()
     }
 
     override func didReceiveMemoryWarning() {
@@ -108,6 +108,18 @@ class SettingsViewController: UITableViewController {
     func updateSliderValueLabels() {
         for slider in Slider.lineWidth.rawValue...Slider.angle.rawValue {
             updateSliderValueLabel(Slider(rawValue: slider)!)
+        }
+    }
+
+    func updateSlidersColorLabels() {
+        for slider in branchColorSliders {
+            branchColorSliderChanged(slider)
+        }
+        for slider in leafColorSliders {
+            leafColorSliderChanged(slider)
+        }
+        for slider in backgroundColorSliders {
+            backgroundColorSliderChanged(slider)
         }
     }
 
